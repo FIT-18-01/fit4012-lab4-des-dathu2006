@@ -100,13 +100,12 @@ Lưu ý: chương trình không in các round keys hay thông tin debug khác đ
 
 ## 5. Padding đang dùng
 
-TODO_STUDENT: Giải thích cơ chế padding em dùng.
+Áp dụng zero-padding cho block cuối cùng:
 
-Gợi ý:
-- nếu plaintext dài hơn 64 bit thì chia block như thế nào
-- nếu thiếu bit thì pad bằng `0` ra sao
-- hạn chế của zero padding là gì
-- vì sao cách này chỉ phù hợp cho bài học nhập môn, không phải thiết kế an toàn hoàn chỉnh trong thực tế
+- Nếu plaintext dài hơn 64 bit: chia tuần tự thành các block 64 bit và mã hóa từng block.
+- Nếu block cuối thiếu bit thì pad thêm các ký tự '0' ở bên phải cho đủ 64 bit.
+
+Hạn chế: zero-padding không cho biết rõ số bit/byte đã pad nếu plaintext có thể kết thúc bằng một hoặc nhiều ký tự '0', nên không phù hợp cho dữ liệu thực tế. Cách này chỉ để minh họa hoạt động multi-block trong bài học.
 
 ## 6. Tests bắt buộc
 
