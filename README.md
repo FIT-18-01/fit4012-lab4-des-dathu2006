@@ -186,8 +186,8 @@ Yêu cầu:
 ### Mode 2: DES decrypt
 Nhập lần lượt:
 1. `2`
-2. ciphertext nhị phân
-3. key 64-bit
+2. ciphertext nhị phân.
+3. key 64-bit.
 
 Yêu cầu:
 - giải mã DES theo round keys đảo ngược
