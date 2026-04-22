@@ -179,9 +179,9 @@ Nhập lần lượt:
 3. key 64-bit
 
 Yêu cầu:
-- nếu plaintext dài hơn 64 bit: chia block 64 bit và mã hóa tuần tự
-- nếu block cuối thiếu bit: zero padding
-- in ra **ciphertext cuối cùng** dưới dạng chuỗi nhị phân
+- nếu plaintext dài hơn 64 bit: chia block 64 bit và mã hóa tuần tự.
+- nếu block cuối thiếu bit: zero padding.
+- in ra **ciphertext cuối cùng** dưới dạng chuỗi nhị phân.
 
 ### Mode 2: DES decrypt
 Nhập lần lượt:
