@@ -57,23 +57,46 @@ cmake --build build
 
 ## 3. Input / Đầu vào
 
-TODO_STUDENT: Mô tả rõ đầu vào của chương trình sau khi em hoàn thiện bài lab.
+Chương trình nhận dữ liệu từ stdin theo hợp đồng sau (một số mode cho phép nhiều block):
 
-Gợi ý nên nêu:
-- plaintext đang được nhập như thế nào
-- key đang được nhập như thế nào
-- chương trình nhận 1 block hay nhiều block
-- định dạng dữ liệu là chuỗi bit, chuỗi ký tự hay file
+- Dòng đầu: một số nguyên mode (1..4)
+  - 1 = DES encrypt
+  - 2 = DES decrypt
+  - 3 = TripleDES encrypt
+  - 4 = TripleDES decrypt
+
+- Mode 1 (DES encrypt): nhập lần lượt
+  1. plaintext dưới dạng chuỗi nhị phân (có thể dài hơn 64 bit)
+  2. key 64-bit (chuỗi nhị phân độ dài 64)
+  Hệ thống tự chia plaintext thành block 64 bit; block cuối nếu thiếu được pad bằng zero.
+
+- Mode 2 (DES decrypt): nhập lần lượt
+  1. ciphertext dưới dạng chuỗi nhị phân (một hoặc nhiều block 64-bit)
+  2. key 64-bit
+
+- Mode 3 (TripleDES encrypt): nhập lần lượt
+  1. plaintext 64-bit
+  2. K1 (64-bit)
+  3. K2 (64-bit)
+  4. K3 (64-bit)
+
+- Mode 4 (TripleDES decrypt): nhập lần lượt
+  1. ciphertext 64-bit
+  2. K1 (64-bit)
+  3. K2 (64-bit)
+  4. K3 (64-bit)
+
+Tất cả dữ liệu đầu vào phải là chuỗi nhị phân ('0'/'1'). Các key yêu cầu chính xác 64 bit.
 
 ## 4. Output / Đầu ra
 
-TODO_STUDENT: Mô tả rõ đầu ra của chương trình.
+Chương trình in ra kết quả cuối cùng dưới dạng một chuỗi nhị phân hợp lệ trên một dòng duy nhất.
 
-Gợi ý nên nêu:
-- ciphertext hiển thị ra sao
-- có in round keys hay không
-- có hỗ trợ giải mã hay không
-- với TripleDES thì đầu ra gồm những gì
+- Mode 1: in ciphertext (chuỗi nhị phân) là kết quả mã hóa tất cả block theo thứ tự (concatenate các block ciphertext).
+- Mode 2: in plaintext (chuỗi nhị phân) là kết quả giải mã tất cả block (lưu ý zero-padding không được loại bỏ tự động).
+- Mode 3 / 4: in một block 64-bit kết quả của TripleDES (ciphertext hoặc plaintext tùy mode).
+
+Lưu ý: chương trình không in các round keys hay thông tin debug khác để đảm bảo kết quả cuối cùng có thể tách ra chính xác cho CI.
 
 ## 5. Padding đang dùng
 
