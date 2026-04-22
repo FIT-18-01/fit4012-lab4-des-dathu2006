@@ -7,5 +7,7 @@ build/
 # IDE files
 .vscode/
 .idea/
+.vs/
+*.exe
 *.swp
 .DS_Store
